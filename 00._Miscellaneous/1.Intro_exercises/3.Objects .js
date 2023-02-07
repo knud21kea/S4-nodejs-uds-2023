@@ -7,7 +7,9 @@ const myObj = { message: "Hello, earthling! I bring peace." };
 
 // Log the message 
 
-console.log(myObj.message);
+const messageToLog = myObj.message;
+console.log(messageToLog);
+
 
 // --------------------------------------
 // Exercise 2 - Defining an object. 
@@ -27,6 +29,7 @@ const stackOverflow = {};
 
 stackOverflow.isAllowed = true;
 
+
 // --------------------------------------
 // Exercise 4 - Remove a property 
 
@@ -36,5 +39,6 @@ const thisSong = { description: "The best song in the world." };
 
 delete thisSong.description;
 thisSong.about = "Just a tribute";
+
 
 // --------------------------------------

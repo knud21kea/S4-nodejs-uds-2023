@@ -9,6 +9,7 @@ const letters = ["a","b","c"];
 const elementToShow = letters[1];
 console.log(elementToShow);
 
+
 // --------------------------------------
 // Exercise 2 - Array Positioning
 
@@ -21,6 +22,7 @@ const friend2 = { name: "Bob"};
 const friend3 = { name: "Cal"};
 friends.push('friend1', 'friend2', 'friend3');
 
+
 // --------------------------------------
 // Exercise 3 - Get the index of first occurance of that value. 
 
@@ -32,6 +34,7 @@ const significantMathNumbers = [0, 2.718, 3.14159, 1729];
 const index = significantMathNumbers.indexOf(1729); // Still returns first index if there are multiple entries
 console.log(index);
 
+
 // --------------------------------------
 // Exercise 4 - Inserting elements
 
@@ -42,6 +45,7 @@ const diet = ["tomato", "cucumber", "rocket"];
 diet.splice( 2, 0, "hamburger", "soda", "pizza"); // 0 elements deleted
 console.log(diet);
 
+
 // --------------------------------------
 // Exercise 5 - Remove element
 
@@ -51,6 +55,7 @@ console.log(diet);
 diet.pop();
 console.log(diet);
 
+
 // --------------------------------------
 // Exercise 6 - Copy array
 
@@ -58,6 +63,7 @@ console.log(diet);
 
 const dinnerTray = diet;
 console.log(dinnerTray);
+
 
 // --------------------------------------
 // Exercise 7 - For loop
@@ -69,6 +75,7 @@ const lettersExpanded = ["a","b","c", "d", "e", "f", "g", "h"];
 for (i = 1; i < lettersExpanded.length; i = i + 2) {
     console.log(lettersExpanded[i]);
 }
+
 
 // --------------------------------------
 // Exercise 8 - For loop and if statement
@@ -88,5 +95,6 @@ numbers.forEach(number => {
     }
 });
 console.log(discardedNumbers);
+
 
 // --------------------------------------
