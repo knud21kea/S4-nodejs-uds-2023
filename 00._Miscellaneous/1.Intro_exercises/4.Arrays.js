@@ -39,7 +39,7 @@ const diet = ["tomato", "cucumber", "rocket"];
 
 // You are a programmer. In one line (one statement) insert hamburger, soda and pizza between the elements cucumber and rocket
 
-diet.splice( 2, 0, "hamburger", "soda", "pizza");
+diet.splice( 2, 0, "hamburger", "soda", "pizza"); // 0 elements deleted
 console.log(diet);
 
 // --------------------------------------
@@ -66,7 +66,7 @@ const lettersExpanded = ["a","b","c", "d", "e", "f", "g", "h"];
 
 // log every second char in the array starting from b
 
-for (i = 1; i = i + 2; lettersExpanded.length) {
+for (i = 1; i < lettersExpanded.length; i = i + 2) {
     console.log(lettersExpanded[i]);
 }
 
@@ -79,5 +79,14 @@ const discardedNumbers = [];
 
 // log the element if the number is above 6 or below 0
 // else push them to the array discardedNumbers
+
+numbers.forEach(number => {
+    if (number > 6 || number < 0) {
+        console.log(number);
+    } else {
+        discardedNumbers.push(number);
+    }
+});
+console.log(discardedNumbers);
 
 // --------------------------------------
