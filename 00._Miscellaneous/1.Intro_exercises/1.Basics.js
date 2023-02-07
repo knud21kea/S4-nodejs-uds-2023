@@ -10,7 +10,7 @@ const lastName = "Latif";
 // show in the console
 // My first name is Anders and my last name is Latif
 
-const textToShow = `My first name is ${firstName} and my last name is ${lastName}`;
+const textToShow = `My first name is ${firstName} and my last name is ${lastName}.`;
 console.log(textToShow);
 
 // --------------------------------------
