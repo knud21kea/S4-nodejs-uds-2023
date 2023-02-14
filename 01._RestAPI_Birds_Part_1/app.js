@@ -81,7 +81,7 @@ An alternative design where the parameter is passed using a path variable */
 app.get("/birds/:id", (req, res) => {
     res.send(`
     <h1>Birds</h1>
-    <h3>The particular bird which has id ${req.params.id}:</h3>    
+    <h3>The properties of the particular bird which has id ${req.params.id}:</h3>    
     ${getDataOfOneBird(req.params.id)}
     `);
 });
@@ -109,6 +109,7 @@ function getDataOfOneBird(id) {
     <li>Family: ${birds[id].family}</li>
     <li>Size: ${birds[id].size}cm</li>
     <li>Weight: ${birds[id].mass}g</li>    
+    <li>Description: ${birds[id].description}</li>    
     </ul>`;
     return listToReturn;
 }
