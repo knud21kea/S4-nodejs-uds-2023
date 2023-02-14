@@ -1,0 +1,12 @@
+
+
+protocol
+    domain
+        enpoint
+            path variable
+                    query string (optional)
+
+https://localhost/kickdinosaur/:id?size=1200
+
+
+
