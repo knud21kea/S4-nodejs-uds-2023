@@ -11,25 +11,31 @@ It is invisioned that a bird has for now the following properties:
     description
 */
 
+// -----------------------------------------------------------------------------------------------
+// Data
+
 const birds = []; // implementation is a simple array of objects, no persistence
 
-    birds.push({
-        id: "1", name: "House sparrow", family: "Passer domesticus", size: "16", mass: "40",
-        description: "The plumage of the house sparrow is mostly different shades of grey and brown."
-    });
-    
-    birds.push({
-        id: "2", name: "Starling", family: "Sturnidae", size: "36", mass: "400",
-        description: "Starlings have diverse and complex vocalizations and have been known to embed sounds from their surroundings into their own calls."
-    });
-    
-    birds.push({
-        id: "3", name: "Pigeon", family: "Columbidae", size: "75", mass: "900",
-        description: "Columbidae have unique body feathers, with the shaft being generally broad, strong, and flattened, tapering to a fine point, abruptly."
-    });
-    
-    console.log(birds);
+birds.push({
+    id: "1", name: "House sparrow", family: "Passer domesticus", size: "16", mass: "40",
+    description: "The plumage of the house sparrow is mostly different shades of grey and brown."
+});
 
+birds.push({
+    id: "2", name: "Starling", family: "Sturnidae", size: "36", mass: "400",
+    description: "Starlings have diverse and complex vocalizations and have been known to embed sounds from their surroundings into their own calls."
+});
+
+birds.push({
+    id: "3", name: "Pigeon", family: "Columbidae", size: "75", mass: "900",
+    description: "Columbidae have unique body feathers, with the shaft being generally broad, strong, and flattened, tapering to a fine point, abruptly."
+});
+
+console.log(birds);
+
+
+// ----------------------------------------------------------------------------------------------
+// API
 
 const express = require("express");
 const app = express();
@@ -54,14 +60,14 @@ app.get("/", (req, res) => {
 app.get("/birds", (req, res) => {
     res.send(`
         <h1>Birds</h1>
-        <h3>List of all birds.</h3>
+        <h3>List of all birds:</h3>
         ${getListOfAllBirds()} 
     `);
 });
 
 
 /* Endpoint for the API to display one bird via HTTP GET mapping
-The original design was for the parameter to be passed using a query string */
+Depreciated - The original design was for the parameter to be passed using a query string */
 app.get("/bird", (req, res) => {
     res.send(`
     <h1>Birds</h1>
@@ -80,6 +86,9 @@ app.get("/birds/:id", (req, res) => {
     `);
 });
 
+
+// ---------------------------------------------------------------------------
+// Services
 
 /* returns an unordered HTML list of bird names from the birds collection
 If this was Spring the logic would be in a service, but not sure how it is meant to be handled in node.js */
@@ -102,7 +111,10 @@ function getDataOfOneBird(id) {
     <li>Weight: ${birds[id].mass}g</li>    
     </ul>`;
     return listToReturn;
-}    
+}
 
+
+// ----------------------------------------------------------------------------------
+// Server on dev port
 
 app.listen(8080);
