@@ -42,77 +42,16 @@ const app = express();
 app.use(express.json()); // Future implementation of POST?
 
 
-// API root
-app.get("/", (req, res) => {
-    res.send(`
-    <h1>Birds</h1>
-    <h3>Classification</h3>
-    <p>Aves (alternately Neornithes) - All modern birds, divided into two subdivisions:</p>
-    <p>* Palaeognathae - flightless ratites (such as the ostriches) and the weak-flying tinamous.</p>
-    <p>* Neognathae - all other birds.</p>
-    <br>
-    <p>The number of known living bird species is around 10,906 [Braun & Kimball (2021)]</p>  
-`);
-});
-
-
-/* Endpoint for the API to display all birds via HTTP GET mapping */
+//Endpoint for the API to display all birds via HTTP GET mapping
 app.get("/birds", (req, res) => {
-    res.send(`
-        <h1>Birds</h1>
-        <h3>List of all birds:</h3>
-        ${getListOfAllBirds()} 
-    `);
+    res.send(birds);
 });
 
 
-/* Endpoint for the API to display one bird via HTTP GET mapping
-Depreciated - The original design was for the parameter to be passed using a query string */
-app.get("/bird", (req, res) => {
-    res.send(`
-    <h1>Birds</h1>
-    <h3>Please use the endpoint localhost:8080/birds/${req.query.id} instead.</h3>
-    `);
-});
-
-
-/* Endpoint for the API to display one bird via HTTP GET mapping
-An alternative design where the parameter is passed using a path variable */
+// Endpoint for the API to display one bird with 'id: "id"' via HTTP GET mapping
 app.get("/birds/:id", (req, res) => {
-    res.send(`
-    <h1>Birds</h1>
-    <h3>The properties of the particular bird which has id ${req.params.id}:</h3>    
-    ${getDataOfOneBird(req.params.id)}
-    `);
+    res.send(birds.find(bird => bird.id === req.params.id)); // fails if no bird with that id
 });
-
-
-// ---------------------------------------------------------------------------
-// Services
-
-/* returns an unordered HTML list of bird names from the birds collection
-If this was Spring the logic would be in a service, but not sure how it is meant to be handled in node.js */
-function getListOfAllBirds() {
-    let listToReturn = `<ul>`
-    birds.forEach(bird => {
-        listToReturn += `<li>${bird.name}</li>`
-    })
-    listToReturn += `</ul>`;
-    return listToReturn;
-}
-
-
-// returns an unordered HTML list of bird data for the bird with id
-function getDataOfOneBird(id) {
-    let listToReturn = `<ul>
-    <li>Name: ${birds[id].name}</li>
-    <li>Family: ${birds[id].family}</li>
-    <li>Size: ${birds[id].size}cm</li>
-    <li>Weight: ${birds[id].mass}g</li>    
-    <li>Description: ${birds[id].description}</li>    
-    </ul>`;
-    return listToReturn;
-}
 
 
 // ----------------------------------------------------------------------------------
