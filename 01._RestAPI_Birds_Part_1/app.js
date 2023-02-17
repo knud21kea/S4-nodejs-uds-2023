@@ -82,7 +82,6 @@ app.delete("/birds/:id", (req, res) => {
     let birdDeleted = [];
     if (indexOfBirdToDelete > -1) {
         birdDeleted = birds.splice(indexOfBirdToDelete, 1);
-        console.log.birdDeleted;
     }
     res.send({ deleted: birdDeleted[0] });
 });
