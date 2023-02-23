@@ -1,5 +1,5 @@
 /*
-Birds Rest API - Part 1
+Birds Rest API - Part 2
 
 Uses an array of bird objects to simulate DB
 It is invisioned that a bird has for now the following properties:
@@ -44,27 +44,26 @@ birds.push({
 
 const express = require("express");
 const app = express();
-app.use(express.json()); // Future implementation of POST?
+app.use(express.json());
 
 
-//Endpoint for the API to read all birds via HTTP GET mapping
+//Endpoint for the API to read all birds via HTTP GET mapping (from Part 1)
 app.get("/birds", (req, res) => {
     res.send(birds);
 });
 
 
-// Endpoint for the API to read the bird with 'id: id' via HTTP GET mapping
+// Endpoint for the API to read the bird with 'id: id' via HTTP GET mapping (from Part 1)
 app.get("/birds/:id", (req, res) => {
     res.send(birds.find(bird => bird.id === parseInt(req.params.id))); // fails if no bird with that id
 });
 
 
-//Birds Rest API - Part 2
+/* Endpoint for the API to create one bird with 'auto-incremented' id via HTTP POST mapping
+If data for an attribute is not provided in the request then req.body just reurns type undefined */
 
-
-// Endpoint for the API to create one bird with 'auto-incremented' id via HTTP POST mapping
+// 'birds.slice(-1)[0].id + 1' simulates auto increment by finding the last id in the array and adding 1
 app.post("/birds", (req, res) => {
-    console.log(req.body.mass);
     birds.push({
         id: birds.slice(-1)[0].id + 1,
         name: req.body.name,
@@ -74,6 +73,15 @@ app.post("/birds", (req, res) => {
         description: req.body.description
     });
     res.send({ created: birds.slice(-1)[0] });
+});
+
+
+/* Endpoint for the API to update the bird with 'id: id' via HTTP PATCH mapping
+API design is changed from the original PUT */
+app.patch("/birds/:id", (req, res) => {
+    const indexOfBirdToUpdate = birds.indexOf(birds.find(bird => bird.id === parseInt(req.params.id)));
+    birds[indexOfBirdToUpdate] = {...birds[indexOfBirdToUpdate], ...req.body};
+    res.send({ updated: birds[indexOfBirdToUpdate] });
 });
 
 
@@ -91,4 +99,11 @@ app.delete("/birds/:id", (req, res) => {
 // ----------------------------------------------------------------------------------
 // Server on dev port
 
-app.listen(8080);
+const PORT = 8080;
+app.listen(PORT, (error) => {
+    if (error) {
+        console.log(error);
+        return;
+    }
+    console.log("Server is running on port", PORT);
+});
