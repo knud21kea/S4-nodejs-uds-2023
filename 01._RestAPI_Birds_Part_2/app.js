@@ -60,17 +60,10 @@ app.get("/birds/:id", (req, res) => {
 
 
 /* Endpoint for the API to create one bird with 'auto-incremented' id via HTTP POST mapping
-If data for an attribute is not provided in the request then req.body just reurns type undefined */
-
-// 'birds.slice(-1)[0].id + 1' simulates auto increment by finding the last id in the array and adding 1
+'birds.slice(-1)[0].id + 1' simulates auto increment by finding the last id in the array and adding 1 */
 app.post("/birds", (req, res) => {
     birds.push({
-        id: birds.slice(-1)[0].id + 1,
-        name: req.body.name,
-        family: req.body.family,
-        size: req.body.size,
-        mass: req.body.mass,
-        description: req.body.description
+        id: birds.slice(-1)[0].id + 1, ...req.body
     });
     res.send({ created: birds.slice(-1)[0] });
 });
