@@ -66,8 +66,11 @@ app.get("/birds/:id", (req, res) => {
 });
 
 
-/* Endpoint for the API to create one bird with 'auto-incremented' id via HTTP POST mapping
-'birds.slice(-1)[0].id + 1' simulates auto increment by finding the last id in the array and adding 1 */
+/*
+Endpoint for the API to create one bird with 'auto-incremented' id via HTTP POST mapping
+'birds.slice(-1)[0].id + 1' simulates auto increment by finding the last id in the array and adding 1
+This is not guaranteed unique, an improvement might be to find the highest id and increment that
+*/
 app.post("/birds", (req, res) => {
     birds.push({
         id: birds.slice(-1)[0].id + 1, ...req.body
