@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freefall</title>
+</head>
+
+<body onload="javascript:startTimer()">
+    <h1>Calculations with acceleration due to gravity</h1>
+    <div id="simple-timer"></div>
+
+    <script>
+        const timeDiv = document.getElementById('simple-timer');
+        let timeInterval = 1000;
+        timeDiv.innerText = '1000.0';
+        let timeAsNumber = Number(timeDiv.innerText);
+
+
+        function increaseEverySecond() {
+            timeAsNumber += 0.1;
+            timeDiv.innerText = timeAsNumber.toFixed(1);
+        }
+
+
+        function startTimer() {
+                timeInterval = setInterval(increaseEverySecond, 100);
+            }
+
+        
+    </script>
+</body>
+
+</html>
