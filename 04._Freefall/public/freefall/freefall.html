@@ -16,15 +16,22 @@
         <button class = "button" onclick="calculateFreefall()">Submit</button>
     </div>
     <div>
-        <span>The chosen height is </span>
-        <span id="freefall-height"></span>
+        <span>The chosen height is</span>
+        <span id="freefall-height">0</span>
         <span>m.</span>
+    </div>
+    <div>
+        <span>The time to fall is</span>
+        <span id="time-from-height">0</span>
+        <span>s.</span>
     </div>
 
     <script>
         function calculateFreefall() {
         const freefallHeight = document.getElementById('altitude').value;
         document.getElementById("freefall-height").innerText = freefallHeight;
+        const timeToFall = Math.sqrt(freefallHeight / 4.9);
+        document.getElementById("time-from-height").innerText = freefallHeight;
     }
 
     </script>
