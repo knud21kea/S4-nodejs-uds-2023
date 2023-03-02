@@ -28,7 +28,11 @@
     <div>
         <span>The speed attained is</span>
         <span id="final-speed">0</span>
-        <span>s.</span>
+        <span>m/s.</span>
+    </div><div>
+        <span>Which is equivalent to</span>
+        <span id="final-speed-kmph">0</span>
+        <span>km/h.</span>
     </div>
 
     <script>
@@ -37,8 +41,9 @@
         document.getElementById("freefall-height").innerText = freefallHeight;
         const timeToFall = Math.sqrt(freefallHeight / 4.9).toFixed(1);
         document.getElementById("time-from-height").innerText = timeToFall;
-        const finalSpeed = freefallHeight * 19.6;
+        const finalSpeed = Math.sqrt(freefallHeight * 19.6).toFixed(1);
         document.getElementById("final-speed").innerText = finalSpeed;
+        document.getElementById("final-speed-kmph").innerText = (finalSpeed * 0.28).toFixed(1);
     }
 
     </script>
