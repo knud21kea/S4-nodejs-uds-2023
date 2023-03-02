@@ -8,12 +8,6 @@ app.get("/", (req, res) => {
 });
 
 
-const days = ["Sunday", "Monday", "Thursday", "Wednesday", "Thursday", "Friday", "Saturday"]
-app.get("/api/time", (req, res) => {
-    res.send({data: days[new Date().getDay()]})
-});
-
-
 const PORT = 8080;
 app.listen(PORT, (error) => {
     if (error) {
