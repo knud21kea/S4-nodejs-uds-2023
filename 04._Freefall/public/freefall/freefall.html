@@ -13,7 +13,7 @@
     <div>
         <label for="altitude">Enter the height to fall in meters (between 1 and 3000):</label>
         <input type="number" id="altitude" name="altitude" min="1" max="3000">
-        <button class = "button" onclick="calculateFreefall()">Submit</button>
+        <button class="button" onclick="calculateFreefall()">Submit</button>
     </div>
     <div>
         <span>The chosen height is</span>
@@ -29,7 +29,8 @@
         <span>The speed attained is</span>
         <span id="final-speed">0</span>
         <span>m/s.</span>
-    </div><div>
+    </div>
+    <div>
         <span>Which is equivalent to</span>
         <span id="final-speed-kmph">0</span>
         <span>km/h.</span>
@@ -37,15 +38,14 @@
 
     <script>
         function calculateFreefall() {
-        const freefallHeight = document.getElementById('altitude').value;
-        document.getElementById("freefall-height").innerText = freefallHeight;
-        const timeToFall = Math.sqrt(freefallHeight / 4.9).toFixed(1);
-        document.getElementById("time-from-height").innerText = timeToFall;
-        const finalSpeed = Math.sqrt(freefallHeight * 19.6).toFixed(1);
-        document.getElementById("final-speed").innerText = finalSpeed;
-        document.getElementById("final-speed-kmph").innerText = (finalSpeed * 0.28).toFixed(1);
-    }
-
+            const freefallHeight = document.getElementById('altitude').value;
+            document.getElementById("freefall-height").innerText = freefallHeight;
+            const timeToFall = Math.sqrt(freefallHeight / 4.9).toFixed(1);
+            document.getElementById("time-from-height").innerText = timeToFall;
+            const finalSpeed = Math.sqrt(freefallHeight * 19.6).toFixed(1);
+            document.getElementById("final-speed").innerText = finalSpeed;
+            document.getElementById("final-speed-kmph").innerText = (finalSpeed * 3.6).toFixed(1);
+        }
     </script>
 </body>
 
